@@ -1,0 +1,124 @@
+﻿<Window x:Class="Autolabor_Console.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Autolabor_Console"
+        mc:Ignorable="d"
+        Title="AutoLabor Console" MinHeight="420" MinWidth="800" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition MinWidth="120" Width="Auto" />
+            <ColumnDefinition MinWidth="80" Width="Auto" />
+            <ColumnDefinition MinWidth="80" Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="串口" FontSize="16" Margin="12"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+        <ComboBox Name="SerialsBox" Margin="12"
+                  HorizontalContentAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  Grid.Row="0" Grid.Column="1" />
+        <Button Content="打开" FontSize="16" Margin="12"
+                Click="Open_Click"
+                Grid.Row="0" Grid.Column="2" />
+        <Button Content="扫描" FontSize="16" Margin="12"
+                Click="Scan_Click"
+                Grid.Row="0" Grid.Column="3" />
+
+        <Grid Margin="12"
+              Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="下位机反馈" FontSize="16" Margin="0,0,24,0"
+                       VerticalAlignment="Center" />
+            <Button Content="清除" FontSize="16"
+                    Click="Clear_OnClick"
+                    Grid.Column="1" />
+        </Grid>
+
+        <ListBox Name="RespondView" Margin="12"
+                 Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" />
+
+        <Grid Margin="12"
+              Grid.Row="0" Grid.Column="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="轮速等级" FontSize="16" Margin="0,0,24,0"
+                       VerticalAlignment="Center" />
+            <ComboBox Name="VelocityBox" FontSize="14"
+                      Grid.Column="1" SelectedIndex="3">
+                <ComboBoxItem>0.2</ComboBoxItem>
+                <ComboBoxItem>0.4</ComboBoxItem>
+                <ComboBoxItem>0.6</ComboBoxItem>
+                <ComboBoxItem>0.8</ComboBoxItem>
+                <ComboBoxItem>1.0</ComboBoxItem>
+            </ComboBox>
+            <TextBlock Grid.Column="2" Text="m/s" FontSize="16" Margin="12,0,12,0" />
+            <Button Content="编码器清零" FontSize="16"
+                    Click="ClearEncoder_OnClick"
+                    Width="120" Grid.Column="3" />
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="4" Grid.RowSpan="2"
+              Height="240" Width="240">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Button Tag="+0 +1" Click="Drive_OnClick" Content="↖" FontSize="32" Grid.Row="0" Grid.Column="0" />
+            <Button Tag="+1 +1" Click="Drive_OnClick" Content="↑" FontSize="32" Grid.Row="0" Grid.Column="1" />
+            <Button Tag="+1 +0" Click="Drive_OnClick" Content="↗" FontSize="32" Grid.Row="0" Grid.Column="2" />
+            <Button Tag="-1 +1" Click="Drive_OnClick" Content="←" FontSize="32" Grid.Row="1" Grid.Column="0" />
+            <Button Tag="+0 +0" Click="Drive_OnClick" Content="停" FontSize="32" Background="Red"
+                    Grid.Row="1" Grid.Column="1" />
+            <Button Tag="+1 -1" Click="Drive_OnClick" Content="→" FontSize="32" Grid.Row="1" Grid.Column="2" />
+            <Button Tag="-0 -1" Click="Drive_OnClick" Content="↙" FontSize="32" Grid.Row="2" Grid.Column="0" />
+            <Button Tag="-1 -1" Click="Drive_OnClick" Content="↓" FontSize="32" Grid.Row="2" Grid.Column="1" />
+            <Button Tag="-1 -0" Click="Drive_OnClick" Content="↘" FontSize="32" Grid.Row="2" Grid.Column="2" />
+
+        </Grid>
+
+        <Image Source="Resources/AUTOLABOR.png" Margin="12" Width="240"
+               Grid.Row="2" Grid.Column="4"
+               VerticalAlignment="Bottom" />
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5">
+            <TextBlock Text="电池电量" FontSize="16" Margin="12,4" />
+            <TextBlock Name="BatteryBlock" Text="???" Width="60" FontSize="16"
+                       VerticalAlignment="Center" TextAlignment="Center" />
+            <TextBlock Text="%" FontSize="16" Margin="12,4" />
+
+            <TextBlock Text="|" FontSize="16" Margin="12,4" />
+
+            <TextBlock Text="编码器脉冲数" FontSize="16" Margin="12,4" />
+            <TextBlock Name="EncoderBlock" Text="左轮：???  |  右轮：???" FontSize="16" Width="240"
+                       VerticalAlignment="Center" TextAlignment="Center" />
+        </StackPanel>
+
+    </Grid>
+</Window>
