@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Autolabor_Console"
         mc:Ignorable="d"
-        Title="AutoLabor Console" MinHeight="420" MinWidth="800" Width="800">
+        Title="AutoLabor Console" MinHeight="480" MinWidth="800" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -62,12 +62,11 @@
             <TextBlock Text="轮速等级" FontSize="16" Margin="0,0,24,0"
                        VerticalAlignment="Center" />
             <ComboBox Name="VelocityBox" FontSize="14"
-                      Grid.Column="1" SelectedIndex="3">
+                      Grid.Column="1" SelectedIndex="0">
                 <ComboBoxItem>0.2</ComboBoxItem>
                 <ComboBoxItem>0.4</ComboBoxItem>
                 <ComboBoxItem>0.6</ComboBoxItem>
                 <ComboBoxItem>0.8</ComboBoxItem>
-                <ComboBoxItem>1.0</ComboBoxItem>
             </ComboBox>
             <TextBlock Grid.Column="2" Text="m/s" FontSize="16" Margin="12,0,12,0" />
             <Button Content="编码器清零" FontSize="16"

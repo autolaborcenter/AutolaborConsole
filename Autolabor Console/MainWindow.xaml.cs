@@ -41,7 +41,8 @@ namespace Autolabor_Console {
                                 Dispatcher.Invoke(() => EncoderBlock.Text = $"左轮：{left}  |  右轮：{right}");
                                 break;
                             case 2: // 解析电量
-                                Dispatcher.Invoke(() => BatteryBlock.Text = payload[0].ToString());
+                                var power = Math.Min(payload[0] + 14, 99);
+                                Dispatcher.Invoke(() => BatteryBlock.Text = power.ToString());
                                 break;
                             case 0xFF: // 超时，重置状态
                                 Send(new byte[] {5, 0});
